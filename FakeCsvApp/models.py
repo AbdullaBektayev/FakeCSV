@@ -70,11 +70,12 @@ class Columns(models.Model):
     From = models.IntegerField(default=None)
     To = models.IntegerField(default=None)
     Order = models.IntegerField(unique=True)
-    Schemas = models.ForeignKey(
+    Schema = models.ForeignKey(
         Schemas,
-        verbose_name='Schemas',
-        related_name='Columns',
+        verbose_name='schema',
+        related_name='column',
         on_delete=models.CASCADE,
+        default=0,
     )
 
     def __str__(self):
