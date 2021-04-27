@@ -75,10 +75,20 @@ WSGI_APPLICATION = 'FakeCSV.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'FakeCSV',      # place for your postgres database
+        'USER': 'postgres',    # place for your postgres user_name
+        'PASSWORD': 'root',    # place for your postgres password
+        'HOST': 'db',   # place for your postgres host
+        'PORT': '5432'         # place for your postgres port
     }
 }
 

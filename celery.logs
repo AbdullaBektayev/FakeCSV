@@ -158,3 +158,120 @@ Trying again in 16.00 seconds... (8/100)
 Trying again in 18.00 seconds... (9/100)
 
 [2021-04-27 04:13:12,707: INFO/MainProcess] beat: Shutting down...
+[2021-04-27 04:23:54,663: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds... (1/100)
+
+[2021-04-27 04:23:56,657: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2021-04-27 04:23:56,747: INFO/Beat] beat: Starting...
+[2021-04-27 04:23:56,771: ERROR/Beat] Removing corrupted schedule file 'celerybeat-schedule': error(11, 'Resource temporarily unavailable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/kombu/utils/objects.py", line 41, in __get__
+    return obj.__dict__[self.__name__]
+KeyError: 'scheduler'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/celery/beat.py", line 515, in setup_schedule
+    self._store = self._open_schedule()
+  File "/usr/local/lib/python3.7/site-packages/celery/beat.py", line 505, in _open_schedule
+    return self.persistence.open(self.schedule_filename, writeback=True)
+  File "/usr/local/lib/python3.7/shelve.py", line 243, in open
+    return DbfilenameShelf(filename, flag, protocol, writeback)
+  File "/usr/local/lib/python3.7/shelve.py", line 227, in __init__
+    Shelf.__init__(self, dbm.open(filename, flag), protocol, writeback)
+  File "/usr/local/lib/python3.7/dbm/__init__.py", line 94, in open
+    return mod.open(file, flag, mode)
+_gdbm.error: [Errno 11] Resource temporarily unavailable
+[2021-04-27 04:24:00,679: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2021-04-27 04:24:06,704: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 8.00 seconds... (4/100)
+
+[2021-04-27 04:24:08,382: INFO/MainProcess] beat: Shutting down...
+[2021-04-27 04:35:57,234: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds... (1/100)
+
+[2021-04-27 04:35:59,068: INFO/Beat] beat: Starting...
+[2021-04-27 04:35:59,085: ERROR/Beat] Removing corrupted schedule file 'celerybeat-schedule': error(11, 'Resource temporarily unavailable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/kombu/utils/objects.py", line 41, in __get__
+    return obj.__dict__[self.__name__]
+KeyError: 'scheduler'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/celery/beat.py", line 515, in setup_schedule
+    self._store = self._open_schedule()
+  File "/usr/local/lib/python3.7/site-packages/celery/beat.py", line 505, in _open_schedule
+    return self.persistence.open(self.schedule_filename, writeback=True)
+  File "/usr/local/lib/python3.7/shelve.py", line 243, in open
+    return DbfilenameShelf(filename, flag, protocol, writeback)
+  File "/usr/local/lib/python3.7/shelve.py", line 227, in __init__
+    Shelf.__init__(self, dbm.open(filename, flag), protocol, writeback)
+  File "/usr/local/lib/python3.7/dbm/__init__.py", line 94, in open
+    return mod.open(file, flag, mode)
+_gdbm.error: [Errno 11] Resource temporarily unavailable
+[2021-04-27 04:35:59,248: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2021-04-27 04:36:03,268: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2021-04-27 04:36:09,290: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 8.00 seconds... (4/100)
+
+[2021-04-27 04:36:17,329: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 10.00 seconds... (5/100)
+
+[2021-04-27 04:36:27,344: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 12.00 seconds... (6/100)
+
+[2021-04-27 04:36:39,376: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 14.00 seconds... (7/100)
+
+[2021-04-27 04:36:53,415: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 16.00 seconds... (8/100)
+
+[2021-04-27 04:37:03,588: INFO/MainProcess] beat: Shutting down...
+[2021-04-27 06:00:43,915: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds... (1/100)
+
+[2021-04-27 06:00:45,926: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2021-04-27 06:00:46,100: INFO/Beat] beat: Starting...
+[2021-04-27 06:00:46,120: ERROR/Beat] Removing corrupted schedule file 'celerybeat-schedule': error(11, 'Resource temporarily unavailable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/kombu/utils/objects.py", line 41, in __get__
+    return obj.__dict__[self.__name__]
+KeyError: 'scheduler'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/celery/beat.py", line 515, in setup_schedule
+    self._store = self._open_schedule()
+  File "/usr/local/lib/python3.7/site-packages/celery/beat.py", line 505, in _open_schedule
+    return self.persistence.open(self.schedule_filename, writeback=True)
+  File "/usr/local/lib/python3.7/shelve.py", line 243, in open
+    return DbfilenameShelf(filename, flag, protocol, writeback)
+  File "/usr/local/lib/python3.7/shelve.py", line 227, in __init__
+    Shelf.__init__(self, dbm.open(filename, flag), protocol, writeback)
+  File "/usr/local/lib/python3.7/dbm/__init__.py", line 94, in open
+    return mod.open(file, flag, mode)
+_gdbm.error: [Errno 11] Resource temporarily unavailable
+[2021-04-27 06:00:49,947: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2021-04-27 06:00:55,980: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 8.00 seconds... (4/100)
+
+[2021-04-27 06:01:03,982: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 10.00 seconds... (5/100)
+
+[2021-04-27 06:01:12,102: INFO/MainProcess] beat: Shutting down...
