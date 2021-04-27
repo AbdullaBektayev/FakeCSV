@@ -1,0 +1,48 @@
+version: '3.7'
+services:
+  redis:
+    image: redis:6.2.2-alpine
+    container_name: rd01
+    ports:
+      - '6379:6379'
+  web:
+    build: ./
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=FakeCSV
+  celery:
+    build: .
+    command: celery -A FakeCSV worker -B -l info -f celery.logs
+    volumes:
+      - ./:/usr/src/app/
+    depends_on:
+      - web
+      - db
+      - redis
+  celery-beat:
+    build: .
+    command: celery -A FakeCSV beat -l info -S django -f celery.logs
+    volumes:
+      - ./:/usr/src/app/
+    depends_on:
+      - web
+      - db
+      - redis
+
+volumes:
+  postgres_data:
