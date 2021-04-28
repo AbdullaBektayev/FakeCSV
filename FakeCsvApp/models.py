@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 
 class Schemas(models.Model):
@@ -40,6 +41,9 @@ class Schemas(models.Model):
 
     def __str__(self):
         return str(self.Name)
+
+    def get_url(self):
+        return reverse('schema_detail', kwargs={'pk': self.id})
 
     class Meta:
         verbose_name = 'Schema'
