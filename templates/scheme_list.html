@@ -4,7 +4,23 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    {% for scheme in scheme_list %}
-        {{ scheme.Name }}
-    {% endfor %}
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for scheme in scheme_list %}
+                <tr>
+                    <td>{{ scheme.id }}</td>
+                    <td>{{ scheme.Name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
