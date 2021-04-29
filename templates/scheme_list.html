@@ -6,18 +6,34 @@
 {% block content %}
 
 <div class="container">
+    <div class="d-flex justify-content-between">
+        <div>Data Schemas</div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="New Schema" class="btn btn-primary">
+        </form>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th>Modified</th>
+                <th>Title</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             {% for scheme in scheme_list %}
                 <tr>
                     <td>{{ scheme.id }}</td>
+                    <td>Some day</td>
                     <td>{{ scheme.Name }}</td>
+                    <td>
+                        <div class="d-flex justify-content-between">
+                            <a href="#" >Edit schema</a>
+                            <a href="#" class="text-danger">Delete</a>
+                        </div>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
