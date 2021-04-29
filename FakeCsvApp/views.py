@@ -16,13 +16,10 @@ class SchemaDetailViews(APIView):
 
 
 class SchemaListViews(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'scheme_list.html'
-
     def get(self, request):
         schemas = Schemas.objects.filter(User=request.user)
         serializer = SchemaListSerializer(schemas, many=True)
-        return Response({'scheme_list': serializer.data})
+        return Response(serializer.data)
 
 
 class SchemaCreateViews(APIView):

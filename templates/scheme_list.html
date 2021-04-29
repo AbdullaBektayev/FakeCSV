@@ -5,11 +5,11 @@
 
 {% block content %}
 
+{% verbatim %}
 <div class="container">
     <div class="d-flex justify-content-between">
         <div>Data Schemas</div>
         <form action="" method="post">
-            {% csrf_token %}
             <input type="submit" value="New Schema" class="btn btn-primary">
         </form>
     </div>
@@ -22,21 +22,22 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-            {% for scheme in scheme_list %}
-                <tr>
-                    <td>{{ scheme.id }}</td>
-                    <td>Some day</td>
-                    <td>{{ scheme.Name }}</td>
-                    <td>
-                        <div class="d-flex justify-content-between">
-                            <a href="#" >Edit schema</a>
-                            <a href="#" class="text-danger">Delete</a>
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+        <tbody  id="schema_list" v-for="schema in schemas">
+            <tr>
+                <td>{{ schema.id }}</td>
+                <td>Some day</td>
+                <td>{{ schema.Name }}</td>
+                <td>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" >Edit schema</a>
+                        <a href="#" class="text-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
+{% endverbatim %}
+
+<script src="/static/schema_list.js"></script>
 {% endblock %}
