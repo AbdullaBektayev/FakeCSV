@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Schemas, Columns
 from .serializers import SchemaDetailSerializer, SchemaListSerializer
+from json import loads
 
 
 class SchemaDetailViews(APIView):
@@ -23,6 +24,22 @@ class SchemaDetailViews(APIView):
             schema = Schemas.objects.all()
             serializer = SchemaDetailSerializer(schema)
             return Response(serializer.data)
+
+    def put(self, request, pk):
+        try:
+            model = Schemas.objects.get(pk=pk)
+        except:
+            return Response('Not Found')
+
+        try:
+            instance = SchemaDetailSerializer(model)
+            instance.update(
+                instance=model,
+                validated_data=loads(request.body)
+            )
+            return Response("Updated")
+        except:
+            return Response(f"Failed:")
 
 
 class ColumnDetailView(APIView):
