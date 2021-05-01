@@ -71,9 +71,9 @@ class Columns(models.Model):
         default=FullName,
         max_length=30,
     )
-    From = models.IntegerField(default=None)
-    To = models.IntegerField(default=None)
-    Order = models.IntegerField(unique=True)
+    From = models.IntegerField(default=None, blank=True)
+    To = models.IntegerField(default=None, blank=True)
+    Order = models.IntegerField(default=0)
     Schema = models.ForeignKey(
         Schemas,
         verbose_name='schema',

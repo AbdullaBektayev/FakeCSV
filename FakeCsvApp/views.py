@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Schemas
+from .models import Schemas, Columns
 from .serializers import (
     SchemaDetailSerializer,
     SchemaListSerializer,
@@ -58,36 +58,24 @@ class SchemaDetailViews(APIView):
 class ColumnDetailView(APIView):
 
     def post(self, request):
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
-        print('SDAGIOAGONOKNAONGON')
         serializer = ColumnDetailSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # def delete(self, request, pk):
-    #     try:
-    #         Columns.objects.get(pk=pk).delete()
-    #         return Response({
-    #             'message': 'Column was deleted successfully!'},
-    #             status=status.HTTP_204_NO_CONTENT
-    #         )
-    #     except Exception as e:
-    #         Response({
-    #             'message': 'Cannot delete columns'},
-    #             status=status.HTTP_400_BAD_REQUEST
-    #         )
+    def delete(self, request, pk):
+        try:
+            Columns.objects.get(pk=pk).delete()
+            return Response({
+                'message': 'Column was deleted successfully!'},
+                status=status.HTTP_204_NO_CONTENT
+            )
+        except Exception as e:
+            Response({
+                'message': 'Cannot delete columns'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class SchemaListViews(APIView):

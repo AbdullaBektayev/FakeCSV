@@ -34,7 +34,7 @@ urlpatterns = [
     ),
 
     path(
-        'api/create_column',
+        'api/create/column/',
         views.ColumnDetailView.as_view(),
         name='create_column'
     ),
