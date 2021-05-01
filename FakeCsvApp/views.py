@@ -3,8 +3,12 @@ from rest_framework import status
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Schemas, Columns
-from .serializers import SchemaDetailSerializer, SchemaListSerializer
+from .models import Schemas
+from .serializers import (
+    SchemaDetailSerializer,
+    SchemaListSerializer,
+    ColumnDetailSerializer,
+)
 from json import loads
 
 
@@ -29,7 +33,10 @@ class SchemaDetailViews(APIView):
         try:
             model = Schemas.objects.get(pk=pk)
         except:
-            return Response('Not Found')
+            return Response(
+                {'message': "Schema was't found!"},
+                status=status.HTTP_204_NO_CONTENT
+            )
 
         try:
             instance = SchemaDetailSerializer(model)
@@ -37,22 +44,50 @@ class SchemaDetailViews(APIView):
                 instance=model,
                 validated_data=loads(request.body)
             )
-            return Response("Updated")
+            return Response(
+                {'message': "Schema was updated successfully!"},
+                status=status.HTTP_302_FOUND
+            )
         except:
-            return Response(f"Failed:")
+            return Response(
+                {'message': "Schema was't updated!"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
 class ColumnDetailView(APIView):
-    def delete(self, request, pk):
-        try:
-            Columns.objects.get(pk=pk).delete()
-            return Response({'message': 'Tutorial was deleted successfully!'},
-                            status=status.HTTP_204_NO_CONTENT
-                            )
-        except Exception as e:
-            Response({'message': 'Cannot delete columns'},
-                     status=status.HTTP_400_BAD_REQUEST
-                     )
+
+    def post(self, request):
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        print('SDAGIOAGONOKNAONGON')
+        serializer = ColumnDetailSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # def delete(self, request, pk):
+    #     try:
+    #         Columns.objects.get(pk=pk).delete()
+    #         return Response({
+    #             'message': 'Column was deleted successfully!'},
+    #             status=status.HTTP_204_NO_CONTENT
+    #         )
+    #     except Exception as e:
+    #         Response({
+    #             'message': 'Cannot delete columns'},
+    #             status=status.HTTP_400_BAD_REQUEST
+    #         )
 
 
 class SchemaListViews(APIView):

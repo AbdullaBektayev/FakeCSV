@@ -9,6 +9,13 @@ class ColumnListSerializer(serializers.ModelSerializer):
         exclude = ('Schema', )
 
 
+class ColumnDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Columns
+        fields = '__all__'
+
+
 class SchemaDetailSerializer(serializers.ModelSerializer):
     column = ColumnListSerializer(many=True)
 

@@ -34,8 +34,13 @@ urlpatterns = [
     ),
 
     path(
+        'api/create_column',
+        views.ColumnDetailView.as_view(),
+        name='create_column'
+    ),
+    path(
         'api/column/<int:pk>/delete',
         views.ColumnDetailView.as_view(),
-        name='delete_schema'
+        name='delete_column'
     )
 ]
