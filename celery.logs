@@ -4320,3 +4320,7 @@ Trying again in 32.00 seconds... (16/100)
 [2021-05-01 13:12:40,350: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
 Trying again in 32.00 seconds... (16/100)
 
+[2021-05-01 13:13:12,410: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-01 13:13:39,772: INFO/MainProcess] beat: Shutting down...
