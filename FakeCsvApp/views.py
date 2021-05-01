@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Schemas
+from .models import Schemas, Columns
 from .serializers import SchemaDetailSerializer, SchemaListSerializer
 
 
@@ -25,6 +25,17 @@ class SchemaDetailViews(APIView):
             return Response(serializer.data)
 
 
+class ColumnDetailView(APIView):
+    def delete(self, request, pk):
+        try:
+            Columns.objects.get(pk=pk).delete()
+            return Response({'message': 'Tutorial was deleted successfully!'},
+                            status=status.HTTP_204_NO_CONTENT
+                            )
+        except Exception as e:
+            Response({'message': 'Cannot delete columns'},
+                     status=status.HTTP_400_BAD_REQUEST
+                     )
 
 
 class SchemaListViews(APIView):

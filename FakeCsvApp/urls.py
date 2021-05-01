@@ -18,7 +18,7 @@ urlpatterns = [
         name='schema_detail',
     ),
     path(
-        'api/delete_schema/<int:pk>',
+        'api/schema/<int:pk>/delete',
         views.SchemaDetailViews.as_view(),
         name='delete_schema'
     ),
@@ -26,5 +26,11 @@ urlpatterns = [
         'api/create_schema/',
         views.SchemaCreateViews.as_view(),
         name='create_schema',
+    ),
+
+    path(
+        'api/column/<int:pk>/delete',
+        views.ColumnDetailView.as_view(),
+        name='delete_schema'
     )
 ]

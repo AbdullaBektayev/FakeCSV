@@ -6,7 +6,7 @@ class ColumnListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Columns
-        exclude = ('Schema', 'id')
+        exclude = ('Schema', )
 
 
 class SchemaDetailSerializer(serializers.ModelSerializer):
@@ -14,7 +14,7 @@ class SchemaDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Schemas
-        exclude = ('id',)
+        fields = '__all__'
 
 
 class SchemaListSerializer(serializers.ModelSerializer):
