@@ -18,6 +18,11 @@ urlpatterns = [
         name='schema_detail',
     ),
     path(
+        'api/delete_schema/<int:pk>',
+        views.SchemaDetailViews.as_view(),
+        name='delete_schema'
+    ),
+    path(
         'api/create_schema/',
         views.SchemaCreateViews.as_view(),
         name='create_schema',

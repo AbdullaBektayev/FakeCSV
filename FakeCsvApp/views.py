@@ -8,16 +8,28 @@ from .serializers import SchemaDetailSerializer, SchemaListSerializer
 
 
 class SchemaDetailViews(APIView):
-
     def get(self, request, pk):
         schema = Schemas.objects.get(pk=pk)
         serializer = SchemaDetailSerializer(schema)
         return Response(serializer.data)
 
+    def delete(self, request, pk):
+        try:
+            Schemas.objects.get(pk=pk).delete()
+            return Response({'message': 'Tutorial was deleted successfully!'},
+                            status=status.HTTP_204_NO_CONTENT
+                            )
+        except Exception as e:
+            schema = Schemas.objects.all()
+            serializer = SchemaDetailSerializer(schema)
+            return Response(serializer.data)
+
+
+
 
 class SchemaListViews(APIView):
     def get(self, request):
-        schemas = Schemas.objects.filter(User=request.user)
+        schemas = Schemas.objects.all()
         serializer = SchemaListSerializer(schemas, many=True)
         return Response(serializer.data)
 
