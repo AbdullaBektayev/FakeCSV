@@ -1,5 +1,9 @@
 from django.urls import path
 from django.views.generic import TemplateView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView
+)
 
 from . import views
 
@@ -42,5 +46,8 @@ urlpatterns = [
         'api/column/<int:pk>/delete',
         views.ColumnDetailView.as_view(),
         name='delete_column'
-    )
+    ),
+
+    path('api-token/', TokenObtainPairView.as_view()),
+    path('api-token-refresh/', TokenRefreshView.as_view()),
 ]
