@@ -40,13 +40,15 @@ class SchemaDetailSerializer(serializers.ModelSerializer):
         instance.save()
 
         for column_data in columns_data:
-            column = columns.pop(0)
-            column.Name = column_data.get('Name', column.Name)
-            column.Type = column_data.get('Type', column.Type)
-            column.From = column_data.get('From', column.From)
-            column.To = column_data.get('To', column.To)
-            column.Order = column_data.get('Order', column.Order)
-            column.save()
+            if len(columns) > 0:
+                column = columns.pop(0)
+                column.Name = column_data.get('Name', column.Name)
+                column.Type = column_data.get('Type', column.Type)
+                column.From = column_data.get('From', column.From)
+                column.To = column_data.get('To', column.To)
+                column.Order = column_data.get('Order', column.Order)
+                column.save()
+
 
         return instance
         # return validated_data
