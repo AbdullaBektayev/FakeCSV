@@ -46,7 +46,6 @@ def create_csv_task(schema_id, row_num):
 
     with open(f'media/{file_name}', 'w', newline='') as f:
         writer = csv.writer(f)
-        # writer.writerow(['adfa','fasgas','gdasgas'])
         writer.writerow(column_name)
         for row in range(row_num):
             writer_row = []

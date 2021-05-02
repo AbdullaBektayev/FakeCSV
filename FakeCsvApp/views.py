@@ -1,13 +1,10 @@
-import os
-
-import django
+from celery.result import AsyncResult
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .tasks import create_csv_task
-from FakeCSV.settings import MEDIA_ROOT
 from .models import Schemas, Columns, DownloadSchemas
 from .serializers import (
     SchemaDetailSerializer,
@@ -117,9 +114,11 @@ class DownloadSchemaView(APIView):
 class CreateCsvView(APIView):
 
     def get(self, request, pk, row_num):
-        file_name, date_modified = create_csv_task(
+        celery_task = create_csv_task.delay(
             schema_id=pk, row_num=row_num
         )
+        result = AsyncResult(celery_task.id, app=create_csv_task)
+        file_name, date_modified = result.get()
         download_schema = DownloadSchemas.objects.create(
             Schema_id=pk,
             DateModified=date_modified,
