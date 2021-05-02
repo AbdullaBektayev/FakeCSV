@@ -54,7 +54,7 @@ urlpatterns = [
         name='download_csv'
     ),
     path(
-        'api/schema/<int:pk>create/csv/<int:row_num>/',
+        'api/schema/<int:pk>/create/csv/<int:row_num>/',
         views.CreateCsvView.as_view(),
         name='create_csv'
     ),

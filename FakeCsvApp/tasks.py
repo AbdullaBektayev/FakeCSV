@@ -19,8 +19,9 @@ def prepare_data(schema_id):
     schema = Schemas.objects.get(id=schema_id)
     schema.DateModified = now()
     schema.save()
-    schema_date_modified = schema.data()['DateModified']
-    column_data = SchemaDetailSerializer(schema).data()['column']
+    schema = SchemaDetailSerializer(schema)
+    schema_date_modified = schema.data['DateModified']
+    column_data = schema.data['column']
     column_data.sort(key=lambda column: column['order'])
 
     column_name = [column['Name'] for column in column_data]
@@ -42,10 +43,11 @@ def prepare_data(schema_id):
 @shared_task(name='create_csv')
 def create_csv_task(schema_id, row_num):
     column_name, column_type, column_from, column_to, schema_date_modified = prepare_data(schema_id)
-    file_name = f'../media/{schema_id}_{schema_date_modified}.csv'
+    file_name = f'{schema_id}_{schema_date_modified}.csv'
 
-    with open(file_name, 'w', newline='') as f:
+    with open(f'media/{file_name}', 'w', newline='') as f:
         writer = csv.writer(f)
+        writer.writerow(['adfa','fasgas','gdasgas'])
         writer.writerow(column_name)
         for row in range(row_num):
             writer_row = []

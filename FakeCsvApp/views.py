@@ -1,6 +1,7 @@
 import os
 
 import django
+from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -102,15 +103,14 @@ class SchemaCreateViews(APIView):
 
 class DownloadSchemaView(APIView):
 
-    def get(self, request, pk, date_modified):
+    def get(self, request, pk):
         download_schema = DownloadSchemas.objects.get(pk=pk)
         file_name = download_schema.File_name
-        data = open(MEDIA_ROOT.join(file_name), 'r').read()
-        response = django.http.HttpResponse(
-            data,
-            mimetype='application/x-download'
+        response = HttpResponse(
+            content_type='text/csv',
+            headers={
+                'Content-Disposition': f'attachment; filename="media/{file_name}"'},
         )
-        response['Content-Disposition'] = f'attachment;filename={file_name}'
         return response
 
 
@@ -121,7 +121,7 @@ class CreateCsvView(APIView):
             schema_id=pk, row_num=row_num
         )
         download_schema = DownloadSchemas.objects.create(
-            Schema__id=pk,
+            Schema_id=pk,
             DateModified=date_modified,
             File_name=file_name
         )
