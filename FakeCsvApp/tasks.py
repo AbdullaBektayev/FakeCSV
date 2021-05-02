@@ -12,7 +12,7 @@ def dump_data_creater(column_type, col_from, col_to):
         'Email': 'John.Wick@gmail.com',
         'Text': 'Cool '*col_to,
         'Integer': (col_to - col_from)/2
-    }.get(column_type, lambda: 'Unknown')()
+    }.get(column_type, 'Unknown')
 
 
 def prepare_data(schema_id):
@@ -22,8 +22,7 @@ def prepare_data(schema_id):
     schema = SchemaDetailSerializer(schema)
     schema_date_modified = schema.data['DateModified']
     column_data = schema.data['column']
-    column_data.sort(key=lambda column: column['order'])
-
+    column_data.sort(key=lambda column: column['Order'])
     column_name = [column['Name'] for column in column_data]
     column_type = [column['Type'] for column in column_data]
     column_from = [column['From'] for column in column_data]
@@ -47,7 +46,7 @@ def create_csv_task(schema_id, row_num):
 
     with open(f'media/{file_name}', 'w', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(['adfa','fasgas','gdasgas'])
+        # writer.writerow(['adfa','fasgas','gdasgas'])
         writer.writerow(column_name)
         for row in range(row_num):
             writer_row = []
@@ -59,6 +58,6 @@ def create_csv_task(schema_id, row_num):
                         col_to=column_to[idx]
                     )
                 )
-            writer.writerow(column_name)
+            writer.writerow(writer_row)
 
     return file_name, schema_date_modified
