@@ -30,16 +30,7 @@ services:
       - POSTGRES_DB=FakeCSV
   celery:
     build: .
-    command: celery -A FakeCSV worker -B -l info -f celery.logs
-    volumes:
-      - ./:/usr/src/app/
-    depends_on:
-      - web
-      - db
-      - redis
-  celery-beat:
-    build: .
-    command: celery -A FakeCSV beat -l info
+    command: celery -A FakeCSV worker -B -l info
     volumes:
       - ./:/usr/src/app/
     depends_on:
