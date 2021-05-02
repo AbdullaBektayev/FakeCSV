@@ -1,6 +1,12 @@
+import os
+
+import django
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from FakeCSV import settings
+from FakeCSV.settings import MEDIA_ROOT
 from .models import Schemas, Columns
 from .serializers import (
     SchemaDetailSerializer,
@@ -91,3 +97,23 @@ class SchemaCreateViews(APIView):
             serializer = SchemaDetailSerializer(schema)
             return Response(serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class DownloadSchema(APIView):
+
+    def download_csv(self, request, pk):
+        schema = Schemas.objects.get(pk=pk)
+        serializer = SchemaDetailSerializer(schema)
+        schema_data = serializer.data()
+
+        schema_id = schema_data['id']
+        schema_date_modified = schema_data['DateModified']
+        file_name = f'{schema_id}_{schema_date_modified}.csv'
+
+        data = open(MEDIA_ROOT.join(file_name), 'r').read()
+        response = django.http.HttpResponse(
+            data,
+            mimetype='application/x-download'
+        )
+        response['Content-Disposition'] = f'attachment;filename={file_name}'
+        return response

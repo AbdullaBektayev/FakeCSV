@@ -49,12 +49,11 @@ class SchemaDetailSerializer(serializers.ModelSerializer):
                 column.Order = column_data.get('Order', column.Order)
                 column.save()
 
-
         return instance
-        # return validated_data
+
 
 class SchemaListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Schemas
-        fields = ('id', 'Name',)
+        fields = ('id', 'Name', 'DateModified')

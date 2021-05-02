@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from datetime import datetime
 
 
 class Schemas(models.Model):
@@ -37,6 +38,10 @@ class Schemas(models.Model):
         choices=StringCharChoices,
         default=QuotationMarks,
         max_length=50,
+    )
+
+    DateModified = models.DateTimeField(
+        default=datetime.now()
     )
 
     def __str__(self):
