@@ -1,9 +1,12 @@
+import os
+
 from celery.result import AsyncResult
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from FakeCSV import settings
 from .tasks import create_csv_task
 from .models import Schemas, Columns, DownloadSchemas
 from .serializers import (
@@ -111,12 +114,18 @@ class DetailDownloadSchemaView(APIView):
     def get(self, request, pk):
         download_schema = DownloadSchemas.objects.get(pk=pk)
         file_name = download_schema.File_name
-        response = HttpResponse(
-            content_type='text/csv',
-            headers={
-                'Content-Disposition': f'attachment; filename="media/{file_name}"'},
-        )
-        return response
+        file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+        with open(file_path, 'rb') as file:
+            response = HttpResponse(
+                file.read(),
+                content_type='text/csv',
+                headers={
+                    'Content-Disposition': f'attachment; '
+                                           f'filename="{file_name}"'
+                },
+            )
+            return response
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class CreateCsvView(APIView):

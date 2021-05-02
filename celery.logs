@@ -27,3 +27,17 @@
 
 [2021-05-02 09:49:07,596: INFO/MainProcess] celery@c452f552cb31 ready.
 [2021-05-02 09:49:08,725: INFO/Beat] beat: Starting...
+[2021-05-02 10:02:52,960: INFO/MainProcess] beat: Shutting down...
+[2021-05-02 10:50:43,089: INFO/MainProcess] Connected to redis://redis:6379//
+[2021-05-02 10:50:43,101: INFO/MainProcess] mingle: searching for neighbors
+[2021-05-02 10:50:44,129: INFO/MainProcess] mingle: all alone
+[2021-05-02 10:50:44,154: WARNING/MainProcess] /usr/local/lib/python3.7/site-packages/celery/fixups/django.py:204: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  leak, never use this setting in production environments!''')
+
+[2021-05-02 10:50:44,156: INFO/MainProcess] celery@c452f552cb31 ready.
+[2021-05-02 10:50:45,032: INFO/Beat] beat: Starting...
+[2021-05-02 10:51:54,156: INFO/MainProcess] Received task: create_csv[84937392-28ef-4dd5-9b5c-9d0d1341436a]  
+[2021-05-02 10:51:54,205: INFO/ForkPoolWorker-4] Task create_csv[84937392-28ef-4dd5-9b5c-9d0d1341436a] succeeded in 0.04315720000886358s: ('1_2021-05-02T10:51:54.176648Z.csv', '2021-05-02T10:51:54.176648Z')
+[2021-05-02 10:52:03,545: INFO/MainProcess] Received task: create_csv[8cb6f601-0292-4ece-874a-e9c9d9b277a9]  
+[2021-05-02 10:52:03,571: INFO/ForkPoolWorker-4] Task create_csv[8cb6f601-0292-4ece-874a-e9c9d9b277a9] succeeded in 0.022181700012879446s: ('1_2021-05-02T10:52:03.557605Z.csv', '2021-05-02T10:52:03.557605Z')
