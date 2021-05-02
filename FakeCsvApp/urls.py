@@ -2,7 +2,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
-    TokenRefreshView
+    TokenRefreshView,
 )
 
 from . import views
@@ -49,8 +49,13 @@ urlpatterns = [
     ),
 
     path(
-        'api/schema/<int:pk>/download/',
-        views.DownloadSchemaView.as_view(),
+        'api/schema/download/list/<int:pk>/',
+        views.ListDownloadSchemaView.as_view(),
+        name='download_list_csv'
+    ),
+    path(
+        'api/schema/download/<int:pk>/',
+        views.DetailDownloadSchemaView.as_view(),
         name='download_csv'
     ),
     path(

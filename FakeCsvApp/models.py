@@ -100,7 +100,7 @@ class DownloadSchemas(models.Model):
         Schemas,
         on_delete=models.CASCADE,
         verbose_name='schema',
-        related_name='DownloadSchema'
+        related_name='DownloadSchemas'
     )
 
     DateModified = models.DateTimeField(default=timezone.now())
@@ -108,7 +108,7 @@ class DownloadSchemas(models.Model):
     File_name = models.CharField(max_length=100)
 
     def __str__(self):
-        return str(self.schema.Name)
+        return str(self.File_name)
 
     class Meta:
         verbose_name = 'DownloadSchema'

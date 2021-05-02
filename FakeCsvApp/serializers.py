@@ -16,14 +16,23 @@ class ColumnDetailSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class DownloadSchemasListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = DownloadSchemas
+        fields = '__all__'
+
+
 class SchemaDetailSerializer(serializers.ModelSerializer):
     column = ColumnListSerializer(many=True)
+    DownloadSchemas = DownloadSchemasListSerializer(many=True)
 
     class Meta:
         model = Schemas
         fields = '__all__'
 
     def update(self, instance, validated_data):
+        validated_data.pop('DownloadSchemas')
         columns_data = validated_data.pop('column')
         columns = (instance.column).all()
         columns = list(columns)
@@ -57,10 +66,3 @@ class SchemaListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Schemas
         fields = ('id', 'Name', 'DateModified')
-
-
-class DownloadSchemasListSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = DownloadSchemas
-        fields = '__all__'

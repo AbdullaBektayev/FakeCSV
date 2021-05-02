@@ -98,7 +98,15 @@ class SchemaCreateViews(APIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class DownloadSchemaView(APIView):
+class ListDownloadSchemaView(APIView):
+
+    def get(self, request, pk):
+        download_schema = DownloadSchemas.objects.all().filter(Schema_id=pk)
+        serializer = DownloadSchemasListSerializer(download_schema, many=True)
+        return Response(serializer.data)
+
+
+class DetailDownloadSchemaView(APIView):
 
     def get(self, request, pk):
         download_schema = DownloadSchemas.objects.get(pk=pk)

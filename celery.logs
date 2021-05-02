@@ -8,3 +8,22 @@
 [2021-05-02 08:48:50,436: INFO/MainProcess] celery@bd3af76b5771 ready.
 [2021-05-02 08:48:51,509: INFO/Beat] beat: Starting...
 [2021-05-02 08:49:15,927: INFO/MainProcess] beat: Shutting down...
+[2021-05-02 09:35:08,496: INFO/MainProcess] Connected to redis://redis:6379//
+[2021-05-02 09:35:08,508: INFO/MainProcess] mingle: searching for neighbors
+[2021-05-02 09:35:09,537: INFO/MainProcess] mingle: all alone
+[2021-05-02 09:35:09,558: WARNING/MainProcess] /usr/local/lib/python3.7/site-packages/celery/fixups/django.py:204: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  leak, never use this setting in production environments!''')
+
+[2021-05-02 09:35:09,560: INFO/MainProcess] celery@bd3af76b5771 ready.
+[2021-05-02 09:35:10,779: INFO/Beat] beat: Starting...
+[2021-05-02 09:48:35,742: INFO/MainProcess] beat: Shutting down...
+[2021-05-02 09:49:06,532: INFO/MainProcess] Connected to redis://redis:6379//
+[2021-05-02 09:49:06,544: INFO/MainProcess] mingle: searching for neighbors
+[2021-05-02 09:49:07,571: INFO/MainProcess] mingle: all alone
+[2021-05-02 09:49:07,593: WARNING/MainProcess] /usr/local/lib/python3.7/site-packages/celery/fixups/django.py:204: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  leak, never use this setting in production environments!''')
+
+[2021-05-02 09:49:07,596: INFO/MainProcess] celery@c452f552cb31 ready.
+[2021-05-02 09:49:08,725: INFO/Beat] beat: Starting...
