@@ -22,17 +22,17 @@ urlpatterns = [
         name='create_schema',
     ),
     path(
-        'api/schema/<int:pk>',
+        'api/schema/<int:pk>/',
         views.SchemaDetailViews.as_view(),
         name='schema_detail',
     ),
     path(
-        'api/schema/<int:pk>/delete',
+        'api/schema/<int:pk>/delete/',
         views.SchemaDetailViews.as_view(),
         name='delete_schema'
     ),
     path(
-        'api/schema/<int:pk>/update',
+        'api/schema/<int:pk>/update/',
         views.SchemaDetailViews.as_view(),
         name='update_schema'
     ),
@@ -43,9 +43,20 @@ urlpatterns = [
         name='create_column'
     ),
     path(
-        'api/column/<int:pk>/delete',
+        'api/column/<int:pk>/delete/',
         views.ColumnDetailView.as_view(),
         name='delete_column'
+    ),
+
+    path(
+        'api/schema/<int:pk>/download/',
+        views.DownloadSchemaView.as_view(),
+        name='download_csv'
+    ),
+    path(
+        'api/schema/<int:pk>create/csv/<int:row_num>/',
+        views.CreateCsvView.as_view(),
+        name='create_csv'
     ),
 
     path('api-token/', TokenObtainPairView.as_view()),

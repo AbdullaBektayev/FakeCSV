@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Schemas, Columns
+from .models import Schemas, Columns, DownloadSchemas
 
 
 class ColumnListSerializer(serializers.ModelSerializer):
@@ -57,3 +57,10 @@ class SchemaListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Schemas
         fields = ('id', 'Name', 'DateModified')
+
+
+class DownloadSchemasListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = DownloadSchemas
+        fields = '__all__'

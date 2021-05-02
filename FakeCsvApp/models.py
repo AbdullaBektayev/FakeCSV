@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
-from datetime import datetime
+from django.utils import timezone
 
 
 class Schemas(models.Model):
@@ -41,7 +41,7 @@ class Schemas(models.Model):
     )
 
     DateModified = models.DateTimeField(
-        default=datetime.now()
+        default=timezone.now()
     )
 
     def __str__(self):
@@ -93,3 +93,23 @@ class Columns(models.Model):
     class Meta:
         verbose_name = 'Column'
         verbose_name_plural = 'Columns'
+
+
+class DownloadSchemas(models.Model):
+    Schema = models.ForeignKey(
+        Schemas,
+        on_delete=models.CASCADE,
+        verbose_name='schema',
+        related_name='DownloadSchema'
+    )
+
+    DateModified = models.DateTimeField(default=timezone.now())
+
+    File_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.schema.Name)
+
+    class Meta:
+        verbose_name = 'DownloadSchema'
+        verbose_name_plural = 'DownloadSchemas'
