@@ -32,7 +32,7 @@ urlpatterns = [
         name='delete_schema'
     ),
     path(
-        'api/schema/<int:pk>/update/',
+        'api/schema/<int:pk>/update',
         views.SchemaDetailViews.as_view(),
         name='update_schema'
     ),
@@ -59,7 +59,7 @@ urlpatterns = [
         name='download_csv'
     ),
     path(
-        'api/schema/<int:pk>/create/csv/<int:row_num>/',
+        'api/schema/create/csv/',
         views.CreateCsvView.as_view(),
         name='create_csv'
     ),

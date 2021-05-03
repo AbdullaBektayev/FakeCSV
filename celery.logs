@@ -41,3 +41,39 @@
 [2021-05-02 10:51:54,205: INFO/ForkPoolWorker-4] Task create_csv[84937392-28ef-4dd5-9b5c-9d0d1341436a] succeeded in 0.04315720000886358s: ('1_2021-05-02T10:51:54.176648Z.csv', '2021-05-02T10:51:54.176648Z')
 [2021-05-02 10:52:03,545: INFO/MainProcess] Received task: create_csv[8cb6f601-0292-4ece-874a-e9c9d9b277a9]  
 [2021-05-02 10:52:03,571: INFO/ForkPoolWorker-4] Task create_csv[8cb6f601-0292-4ece-874a-e9c9d9b277a9] succeeded in 0.022181700012879446s: ('1_2021-05-02T10:52:03.557605Z.csv', '2021-05-02T10:52:03.557605Z')
+[2021-05-02 13:12:02,483: INFO/MainProcess] Received task: create_csv[fc19dec0-ba79-4a4b-817e-c77b26f2b618]  
+[2021-05-02 13:12:02,521: INFO/ForkPoolWorker-4] Task create_csv[fc19dec0-ba79-4a4b-817e-c77b26f2b618] succeeded in 0.030932599998777732s: ('1_2021-05-02T13:12:02.501840Z.csv', '2021-05-02T13:12:02.501840Z')
+[2021-05-02 13:12:28,529: INFO/MainProcess] Received task: create_csv[6a3faff4-51fa-4143-98c2-ba0f05b1caae]  
+[2021-05-02 13:12:28,554: INFO/ForkPoolWorker-4] Task create_csv[6a3faff4-51fa-4143-98c2-ba0f05b1caae] succeeded in 0.021192199987126514s: ('1_2021-05-02T13:12:28.539320Z.csv', '2021-05-02T13:12:28.539320Z')
+[2021-05-02 13:18:31,453: INFO/MainProcess] Received task: create_csv[8fc266f3-91be-4659-9b9e-a86168ad3da0]  
+[2021-05-02 13:18:31,480: INFO/ForkPoolWorker-4] Task create_csv[8fc266f3-91be-4659-9b9e-a86168ad3da0] succeeded in 0.023226700024679303s: ('1_2021-05-02T13:18:31.463760Z.csv', '2021-05-02T13:18:31.463760Z')
+[2021-05-02 13:20:37,831: INFO/MainProcess] Received task: create_csv[e5142dc0-aedf-437f-bb25-fd59d54af4f7]  
+[2021-05-02 13:20:37,861: ERROR/ForkPoolWorker-4] Task create_csv[e5142dc0-aedf-437f-bb25-fd59d54af4f7] raised unexpected: TypeError("'str' object cannot be interpreted as an integer")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/celery/app/trace.py", line 405, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/celery/app/trace.py", line 697, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/usr/src/app/FakeCsvApp/tasks.py", line 50, in create_csv_task
+    for row in range(row_num):
+TypeError: 'str' object cannot be interpreted as an integer
+[2021-05-02 14:41:48,635: INFO/MainProcess] Received task: create_csv[d68f60a8-0179-469f-8ce5-a596114d8f3c]  
+[2021-05-02 14:41:48,666: INFO/ForkPoolWorker-4] Task create_csv[d68f60a8-0179-469f-8ce5-a596114d8f3c] succeeded in 0.026488800009246916s: ('1_2021-05-02T14:41:48.648124Z.csv', '2021-05-02T14:41:48.648124Z')
+[2021-05-02 14:49:52,013: INFO/MainProcess] Received task: create_csv[72d651dc-a740-4b76-9123-e3f222194736]  
+[2021-05-02 14:49:52,035: INFO/ForkPoolWorker-4] Task create_csv[72d651dc-a740-4b76-9123-e3f222194736] succeeded in 0.01784570000017993s: ('2_2021-05-02T14:49:52.024031Z.csv', '2021-05-02T14:49:52.024031Z')
+[2021-05-02 14:51:17,500: INFO/MainProcess] Received task: create_csv[cdf7ace4-9f4c-4d46-bebc-a3fd0e10781b]  
+[2021-05-02 14:51:17,525: INFO/ForkPoolWorker-4] Task create_csv[cdf7ace4-9f4c-4d46-bebc-a3fd0e10781b] succeeded in 0.02102089999243617s: ('2_2021-05-02T14:51:17.510593Z.csv', '2021-05-02T14:51:17.510593Z')
+[2021-05-02 16:12:51,229: INFO/MainProcess] Received task: create_csv[31c57c5e-0ec8-4c40-9514-da0fd90ef219]  
+[2021-05-02 16:12:51,254: INFO/ForkPoolWorker-4] Task create_csv[31c57c5e-0ec8-4c40-9514-da0fd90ef219] succeeded in 0.021402600017609075s: ('3_2021-05-02T16:12:51.241780Z.csv', '2021-05-02T16:12:51.241780Z')
+[2021-05-02 16:15:09,204: INFO/MainProcess] Received task: create_csv[c9830a9c-9a19-4284-ad4d-c119a6687492]  
+[2021-05-02 16:15:09,227: INFO/ForkPoolWorker-4] Task create_csv[c9830a9c-9a19-4284-ad4d-c119a6687492] succeeded in 0.020008399995276704s: ('3_2021-05-02T16:15:09.213549Z.csv', '2021-05-02T16:15:09.213549Z')
+[2021-05-02 16:22:28,185: INFO/MainProcess] beat: Shutting down...
+[2021-05-02 16:22:35,628: INFO/MainProcess] Connected to redis://redis:6379//
+[2021-05-02 16:22:35,645: INFO/MainProcess] mingle: searching for neighbors
+[2021-05-02 16:22:36,673: INFO/MainProcess] mingle: all alone
+[2021-05-02 16:22:36,696: WARNING/MainProcess] /usr/local/lib/python3.7/site-packages/celery/fixups/django.py:204: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  leak, never use this setting in production environments!''')
+
+[2021-05-02 16:22:36,699: INFO/MainProcess] celery@c452f552cb31 ready.
+[2021-05-02 16:22:37,587: INFO/Beat] beat: Starting...

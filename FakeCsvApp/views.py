@@ -14,6 +14,7 @@ from .serializers import (
     SchemaListSerializer,
     ColumnDetailSerializer,
     DownloadSchemasListSerializer,
+    DownloadSchemasDetailSerializer,
 )
 from json import loads
 
@@ -94,11 +95,15 @@ class SchemaListViews(APIView):
 class SchemaCreateViews(APIView):
 
     def post(self, request):
-        if request.user.is_authentificate():
+        try:
             schema = Schemas.objects.create(User=request.user)
             serializer = SchemaDetailSerializer(schema)
             return Response(serializer.data)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        except:
+            return Response(
+                {'request': request},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class ListDownloadSchemaView(APIView):
@@ -130,16 +135,22 @@ class DetailDownloadSchemaView(APIView):
 
 class CreateCsvView(APIView):
 
-    def get(self, request, pk, row_num):
-        celery_task = create_csv_task.delay(
-            schema_id=pk, row_num=row_num
-        )
-        result = AsyncResult(celery_task.id, app=create_csv_task)
-        file_name, date_modified = result.get()
-        download_schema = DownloadSchemas.objects.create(
-            Schema_id=pk,
-            DateModified=date_modified,
-            File_name=file_name
-        )
-        serializer = DownloadSchemasListSerializer(download_schema)
-        return Response(serializer.data)
+    def post(self, request):
+        try:
+            request_data = loads(request.body)
+            pk = int(request_data['pk'])
+            row_num = int(request_data['row_num'])
+            celery_task = create_csv_task.delay(
+                schema_id=pk, row_num=row_num
+            )
+            result = AsyncResult(celery_task.id, app=create_csv_task)
+            file_name, date_modified = result.get()
+            download_schema = DownloadSchemas.objects.create(
+                Schema_id=pk,
+                DateModified=date_modified,
+                File_name=file_name
+            )
+            serializer = DownloadSchemasDetailSerializer(download_schema)
+            return Response(serializer.data)
+        except:
+            return Response({'message': 'not worked', 'request': request.body})

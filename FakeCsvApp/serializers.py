@@ -23,6 +23,13 @@ class DownloadSchemasListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class DownloadSchemasDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = DownloadSchemas
+        fields = '__all__'
+
+
 class SchemaDetailSerializer(serializers.ModelSerializer):
     column = ColumnListSerializer(many=True)
     DownloadSchemas = DownloadSchemasListSerializer(many=True)
