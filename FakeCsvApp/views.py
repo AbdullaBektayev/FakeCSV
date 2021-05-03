@@ -87,7 +87,7 @@ class ColumnDetailView(APIView):
 
 class SchemaListViews(APIView):
     def get(self, request):
-        schemas = Schemas.objects.all()
+        schemas = Schemas.objects.filter(User=request.user)
         serializer = SchemaListSerializer(schemas, many=True)
         return Response(serializer.data)
 

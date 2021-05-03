@@ -77,3 +77,11 @@ TypeError: 'str' object cannot be interpreted as an integer
 
 [2021-05-02 16:22:36,699: INFO/MainProcess] celery@c452f552cb31 ready.
 [2021-05-02 16:22:37,587: INFO/Beat] beat: Starting...
+[2021-05-03 01:44:24,908: INFO/MainProcess] Received task: create_csv[7977f08d-86ca-4ef6-8a01-0475f5fdb650]  
+[2021-05-03 01:44:24,956: INFO/ForkPoolWorker-4] Task create_csv[7977f08d-86ca-4ef6-8a01-0475f5fdb650] succeeded in 0.04261199999018572s: ('3_2021-05-03T01:44:24.926755Z.csv', '2021-05-03T01:44:24.926755Z')
+[2021-05-03 01:44:54,156: INFO/MainProcess] Received task: create_csv[dd9a9db2-247d-4068-a19d-35f0fee9a328]  
+[2021-05-03 01:44:54,182: INFO/ForkPoolWorker-4] Task create_csv[dd9a9db2-247d-4068-a19d-35f0fee9a328] succeeded in 0.02286109997658059s: ('3_2021-05-03T01:44:54.167592Z.csv', '2021-05-03T01:44:54.167592Z')
+[2021-05-03 01:44:58,509: INFO/MainProcess] Received task: create_csv[0470973f-7982-4dd3-959c-6ea12d3e11d2]  
+[2021-05-03 01:44:58,535: INFO/ForkPoolWorker-4] Task create_csv[0470973f-7982-4dd3-959c-6ea12d3e11d2] succeeded in 0.022481000021798536s: ('3_2021-05-03T01:44:58.519512Z.csv', '2021-05-03T01:44:58.519512Z')
+[2021-05-03 01:54:29,352: INFO/MainProcess] Received task: create_csv[e1bae3b7-40a7-4ec2-83c5-c27d9d050664]  
+[2021-05-03 01:54:29,379: INFO/ForkPoolWorker-4] Task create_csv[e1bae3b7-40a7-4ec2-83c5-c27d9d050664] succeeded in 0.0214241000066977s: ('2_2021-05-03T01:54:29.364462Z.csv', '2021-05-03T01:54:29.364462Z')
