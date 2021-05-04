@@ -5,6 +5,29 @@ from django.utils.timezone import now
 import csv
 
 
+def get_data(schema_id):
+    schema = Schemas.objects.get(id=schema_id)
+    schema.DateModified = now()
+    schema.save()
+    schema = SchemaDetailSerializer(schema)
+    return schema.data
+
+
+def get_choices_and_date(schema):
+    choice_dict = {
+        'Comma (,)': ',',
+        'Semicolon (;)': ';',
+        'Double-quote (")': '"',
+        "Single-quote (')": "'",
+    }
+
+    schema_date_modified = '2021-05-02T19:41:48.648124Z'#schema['DateModified']
+    delimiter = choice_dict.get(schema['Delimiter'], ',')
+    quotechar = choice_dict.get(schema['QuoteChar'], '"')
+
+    return delimiter, quotechar, schema_date_modified
+
+
 def dump_data_creater(column_type, col_from, col_to):
     return {
         'FullName': 'John Wick',
@@ -15,13 +38,8 @@ def dump_data_creater(column_type, col_from, col_to):
     }.get(column_type, 'Unknown')
 
 
-def prepare_data(schema_id):
-    schema = Schemas.objects.get(id=schema_id)
-    schema.DateModified = now()
-    schema.save()
-    schema = SchemaDetailSerializer(schema)
-    schema_date_modified = schema.data['DateModified']
-    column_data = schema.data['column']
+def prepare_column_data(schema):
+    column_data = schema['column']
     column_data.sort(key=lambda column: column['Order'])
     column_name = [column['Name'] for column in column_data]
     column_type = [column['Type'] for column in column_data]
@@ -33,19 +51,35 @@ def prepare_data(schema_id):
         column_type,
         column_from,
         column_to,
-        schema_date_modified
     ]
 
+    # test_prepared_data = [
+    #     ['fasfd','sdfas'],
+    #     ['Job','Job'],
+    #     [0,1],
+    #     [1,0],
+    # ]
     return prepared_data
 
 
 @shared_task(name='create_csv')
 def create_csv_task(schema_id, row_num):
-    column_name, column_type, column_from, column_to, schema_date_modified = prepare_data(schema_id)
+    schema_id = 1
+    schema = get_data(schema_id)
+    column_name, column_type, column_from, column_to = prepare_column_data(
+        schema
+    )
+    delimiter, quotechar, schema_date_modified = get_choices_and_date(schema)
+
     file_name = f'{schema_id}_{schema_date_modified}.csv'
 
-    with open(f'media/{file_name}', 'w', newline='') as f:
-        writer = csv.writer(f)
+    with open(f'media/{file_name}', 'w') as f:
+        writer = csv.writer(
+            f,
+            delimiter=delimiter,
+            quotechar=quotechar,
+            quoting=csv.QUOTE_NONNUMERIC
+        )
         writer.writerow(column_name)
         for row in range(row_num):
             writer_row = []
