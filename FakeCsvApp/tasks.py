@@ -53,18 +53,11 @@ def prepare_column_data(schema):
         column_to,
     ]
 
-    # test_prepared_data = [
-    #     ['fasfd','sdfas'],
-    #     ['Job','Job'],
-    #     [0,1],
-    #     [1,0],
-    # ]
     return prepared_data
 
 
 @shared_task(name='create_csv')
 def create_csv_task(schema_id, row_num):
-    schema_id = 1
     schema = get_data(schema_id)
     column_name, column_type, column_from, column_to = prepare_column_data(
         schema
