@@ -5,20 +5,20 @@ from django.utils import timezone
 
 
 class Schemas(models.Model):
-    Comma = 'Comma'
-    Space = 'Space'
+    Comma = 'Comma (,)'
+    Semicolon = 'Semicolon (;)'
 
-    Apostrophe = 'Apostrophe'
-    QuotationMarks = 'Quotation Marks'
+    SingleQuote = "Single-quote (')"
+    DoubleQuote = 'Double-quote (")'
 
-    ColumnSeparatorChoices = (
-        (Comma, 'Comma'),
-        (Space, 'Space'),
+    DelimiterChoices = (
+        (Comma, 'Comma (,)'),
+        (Semicolon, 'Semicolon (;)'),
     )
 
-    StringCharChoices = (
-        (Apostrophe, 'Apostrophe'),
-        (QuotationMarks, 'Quotation Marks'),
+    QuoteCharChoices = (
+        (SingleQuote, "Single-quote (')"),
+        (DoubleQuote, 'Double-quote  (")'),
     )
 
     User = models.ForeignKey(
@@ -28,15 +28,15 @@ class Schemas(models.Model):
 
     Name = models.CharField(max_length=50)
 
-    ColumnSeparator = models.CharField(
-        choices=ColumnSeparatorChoices,
+    Delimiter = models.CharField(
+        choices=DelimiterChoices,
         default=Comma,
         max_length=50,
     )
 
-    StringChar = models.CharField(
-        choices=StringCharChoices,
-        default=QuotationMarks,
+    QuoteChar = models.CharField(
+        choices=QuoteCharChoices,
+        default=DoubleQuote,
         max_length=50,
     )
 
