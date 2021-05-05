@@ -320,3 +320,57 @@ LINE 1: ..._schemas"."User_id", "FakeCsvApp_schemas"."Name", "FakeCsvAp...
 [2021-05-04 15:48:06,735: INFO/ForkPoolWorker-4] Task create_csv[dcb4b39f-a680-4590-9174-a15d34f52bee] succeeded in 0.02148029999989376s: ('1_2021-05-04T15:48:06.721317Z.csv', '2021-05-04T15:48:06.721317Z')
 [2021-05-04 15:50:39,880: INFO/MainProcess] Received task: create_csv[ea91f062-3a16-43e7-a2d0-4383839a48d5]  
 [2021-05-04 15:50:39,906: INFO/ForkPoolWorker-4] Task create_csv[ea91f062-3a16-43e7-a2d0-4383839a48d5] succeeded in 0.022642500000074506s: ('1_2021-05-04T15:50:39.890095Z.csv', '2021-05-04T15:50:39.890095Z')
+[2021-05-05 03:29:45,769: INFO/MainProcess] beat: Shutting down...
+[2021-05-05 03:30:53,153: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error 111 connecting to redis:6379. Connection refused..
+Trying again in 2.00 seconds... (1/100)
+
+[2021-05-05 03:30:55,308: INFO/Beat] beat: Starting...
+[2021-05-05 03:30:55,453: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 4.00 seconds... (2/100)
+
+[2021-05-05 03:30:59,481: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 6.00 seconds... (3/100)
+
+[2021-05-05 03:31:05,521: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 8.00 seconds... (4/100)
+
+[2021-05-05 03:31:13,563: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 10.00 seconds... (5/100)
+
+[2021-05-05 03:31:23,559: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 12.00 seconds... (6/100)
+
+[2021-05-05 03:31:35,595: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 14.00 seconds... (7/100)
+
+[2021-05-05 03:31:49,623: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 16.00 seconds... (8/100)
+
+[2021-05-05 03:32:05,616: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 18.00 seconds... (9/100)
+
+[2021-05-05 03:32:23,617: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 20.00 seconds... (10/100)
+
+[2021-05-05 03:32:43,660: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 22.00 seconds... (11/100)
+
+[2021-05-05 03:33:05,664: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 24.00 seconds... (12/100)
+
+[2021-05-05 03:33:30,512: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 26.00 seconds... (13/100)
+
+[2021-05-05 03:33:56,531: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 28.00 seconds... (14/100)
+
+[2021-05-05 03:34:24,545: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 30.00 seconds... (15/100)
+
+[2021-05-05 03:34:54,566: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-05 03:35:26,602: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379//: Error -2 connecting to redis:6379. Name or service not known..
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-05 03:35:29,927: INFO/MainProcess] beat: Shutting down...
