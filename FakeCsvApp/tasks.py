@@ -66,7 +66,7 @@ def create_csv_task(schema_id, row_num):
 
     file_name = f'{schema_id}_{schema_date_modified}.csv'
 
-    with open(f'media/{file_name}', 'w') as f:
+    with open(f'static/media/{file_name}', 'w') as f:
         writer = csv.writer(
             f,
             delimiter=delimiter,
