@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
     '[::1]',
-    'enigmatic-dawn-95775.herokuapp.com'
+    'enigmatic-dawn-95775.herokuapp.com',
+    '192.168.8.102'
 ]
 
 
