@@ -45,13 +45,13 @@ class SchemaDetailSerializer(serializers.ModelSerializer):
         columns = list(columns)
 
         instance.Name = validated_data.get('Name', instance.Name)
-        instance.ColumnSeparator = validated_data.get(
-            'ColumnSeparator',
-            instance.ColumnSeparator
+        instance.Delimiter = validated_data.get(
+            'Delimiter',
+            instance.Delimiter
         )
-        instance.StringChar = validated_data.get(
-            'StringChar',
-            instance.StringChar
+        instance.QuoteChar = validated_data.get(
+            'QuoteChar',
+            instance.QuoteChar
         )
         instance.save()
 
