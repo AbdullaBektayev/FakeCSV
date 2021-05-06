@@ -1,5 +1,4 @@
 from django.urls import path
-from django.views.generic import TemplateView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -8,13 +7,6 @@ from rest_framework_simplejwt.views import (
 from . import views
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    path(
-        'schema/',
-        TemplateView.as_view(template_name='scheme_list.html'),
-        name='schema_list'
-    ),
-
     path('api/schema/', views.SchemaListViews.as_view(), name='schema'),
     path(
         'api/create_schema/',
