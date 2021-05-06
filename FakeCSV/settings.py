@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-ozbgb)%8t%403ulbs-$)_1_*n#)im#n9)77b&ubnrmjwtdw%=b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','0.0.0.0', '[::1]']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+    '[::1]',
+    'enigmatic-dawn-95775.herokuapp.com',
+]
 
 
 # Application definition
@@ -94,10 +100,10 @@ WSGI_APPLICATION = 'FakeCSV.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'FakeCSV',      # place for your postgres database
-        'USER': 'postgres',    # place for your postgres user_name
-        'PASSWORD': 'root',    # place for your postgres password
-        'HOST': 'db',   # place for your postgres host
+        'NAME': 'df14nture80jgo',      # place for your postgres database
+        'USER': 'dhsjkevmigfmyt',    # place for your postgres user_name
+        'PASSWORD': '5774cfd5b579a0c1e5132ce80c119507f5906b8c857136fca55ef615241b70cb',    # place for your postgres password
+        'HOST': 'ec2-54-224-194-214.compute-1.amazonaws.com',   # place for your postgres host
         'PORT': '5432'         # place for your postgres port
     }
 }
@@ -140,7 +146,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [STATIC_DIR]
 
 
@@ -155,8 +162,9 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # CELERY STUFF
-CELERY_BROKER_URL = 'redis://redis:6379'
-CELERY_RESULT_BACKEND = 'redis://redis:6379'
+REDIS_URL = "redis://redistogo:5c80f1c97d532dd8eb4f32ffddb36225@tarpon.redistogo.com:9315"
+CELERY_BROKER_URL = REDIS_URL
+CELERY_RESULT_BACKEND = REDIS_URL
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'

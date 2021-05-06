@@ -374,3 +374,79 @@ Trying again in 32.00 seconds... (16/100)
 Trying again in 32.00 seconds... (16/100)
 
 [2021-05-05 03:35:29,927: INFO/MainProcess] beat: Shutting down...
+[2021-05-06 16:51:43,686: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 2.00 seconds... (1/100)
+
+[2021-05-06 16:51:44,809: INFO/Beat] beat: Starting...
+[2021-05-06 16:51:46,126: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 4.00 seconds... (2/100)
+
+[2021-05-06 16:51:50,680: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 6.00 seconds... (3/100)
+
+[2021-05-06 16:51:56,402: INFO/MainProcess] beat: Shutting down...
+[2021-05-06 16:52:16,142: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 2.00 seconds... (1/100)
+
+[2021-05-06 16:52:17,763: INFO/Beat] beat: Starting...
+[2021-05-06 16:52:18,723: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 4.00 seconds... (2/100)
+
+[2021-05-06 16:52:23,165: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 6.00 seconds... (3/100)
+
+[2021-05-06 16:52:29,695: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 8.00 seconds... (4/100)
+
+[2021-05-06 16:52:38,240: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 10.00 seconds... (5/100)
+
+[2021-05-06 16:52:48,931: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 12.00 seconds... (6/100)
+
+[2021-05-06 16:53:01,416: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 14.00 seconds... (7/100)
+
+[2021-05-06 16:53:15,902: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 16.00 seconds... (8/100)
+
+[2021-05-06 16:53:32,534: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 18.00 seconds... (9/100)
+
+[2021-05-06 16:53:51,121: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 20.00 seconds... (10/100)
+
+[2021-05-06 16:54:11,627: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 22.00 seconds... (11/100)
+
+[2021-05-06 16:54:34,189: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 24.00 seconds... (12/100)
+
+[2021-05-06 16:54:58,692: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 26.00 seconds... (13/100)
+
+[2021-05-06 16:55:25,420: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 28.00 seconds... (14/100)
+
+[2021-05-06 16:55:54,077: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 30.00 seconds... (15/100)
+
+[2021-05-06 16:56:24,607: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-06 16:56:57,166: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-06 16:57:29,736: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-06 16:58:04,870: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-06 16:58:37,924: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-06 16:59:10,398: ERROR/MainProcess] consumer: Cannot connect to redis://:**@ec2-18-213-92-149.compute-1.amazonaws.com:29630//: Connection closed by server..
+Trying again in 32.00 seconds... (16/100)
+
+[2021-05-06 16:59:36,640: INFO/MainProcess] beat: Shutting down...
