@@ -21,7 +21,7 @@ def get_choices_and_date(schema):
         "Single-quote (')": "'",
     }
 
-    schema_date_modified = '2021-05-02T19:41:48.648124Z'#schema['DateModified']
+    schema_date_modified = schema['DateModified']
     delimiter = choice_dict.get(schema['Delimiter'], ',')
     quotechar = choice_dict.get(schema['QuoteChar'], '"')
 
