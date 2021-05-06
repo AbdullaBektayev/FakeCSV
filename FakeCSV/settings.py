@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -167,3 +168,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+AWS_ACCESS_KEY_ID = 'AKIA35HGPOJTLFQLERP2'
+AWS_SECRET_ACCESS_KEY = 'i3uxlmsownyVaCOguzKslRJBM9FkL9ay2sBntkz4'
+AWS_STORAGE_BUCKET_NAME = 'fake-csv'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
