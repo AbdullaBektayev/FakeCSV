@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ozbgb)%8t%403ulbs-$)_1_*n#)im#n9)77b&ubnrmjwtdw%=b'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -163,7 +163,7 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # CELERY STUFF
-REDIS_URL = "redis://:p821b5184336f08478407af73bfdbf7d0cac138b488b04879293c80d33df13649@ec2-18-213-92-149.compute-1.amazonaws.com:29629"
+REDIS_URL = ""
 CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -178,8 +178,8 @@ REST_FRAMEWORK = {
     )
 }
 
-AWS_ACCESS_KEY_ID = 'AKIA35HGPOJTLFQLERP2'
-AWS_SECRET_ACCESS_KEY = 'i3uxlmsownyVaCOguzKslRJBM9FkL9ay2sBntkz4'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
 AWS_STORAGE_BUCKET_NAME = 'fake-csv'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
