@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 from corsheaders.defaults import default_headers
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,22 +34,6 @@ ALLOWED_HOSTS = [
     'enigmatic-dawn-95775.herokuapp.com',
     'planeks-fake-csv.herokuapp.com',
 ]
-
-CORS_ALLOW_HEADERS = default_headers + (
-    'Access-Control-Allow-Headers',
-    'Access-Control-Allow-Credentials',
-    'Access-Control-Allow-Origin',
-)
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ORIGIN_WHITELIST = (
-    'https://planeks-fake-csv.herokuapp.com',
-    'https://enigmatic-dawn-95775.herokuapp.com',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-)
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -80,12 +65,18 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
-    "https://web.postman.co"
+    "https://web.postman.co",
+    'https://enigmatic-dawn-95775.herokuapp.com',
 ]
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Credentials',
+    'Access-Control-Allow-Origin',
     'contenttype',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'FakeCSV.urls'
 
@@ -196,3 +187,9 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
