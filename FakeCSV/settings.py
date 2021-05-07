@@ -33,22 +33,6 @@ ALLOWED_HOSTS = [
     'enigmatic-dawn-95775.herokuapp.com',
     'planeks-fake-csv.herokuapp.com',
 ]
-
-CORS_ALLOW_HEADERS = default_headers + (
-    'Access-Control-Allow-Headers',
-    'Access-Control-Allow-Credentials',
-    'Access-Control-Allow-Origin',
-)
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ORIGIN_WHITELIST = (
-    'https://planeks-fake-csv.herokuapp.com',
-    'https://enigmatic-dawn-95775.herokuapp.com',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-)
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -79,12 +63,18 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
-    "https://web.postman.co"
+    "https://web.postman.co",
+    'https://enigmatic-dawn-95775.herokuapp.com',
 ]
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Credentials',
+    'Access-Control-Allow-Origin',
     'contenttype',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'FakeCSV.urls'
 
