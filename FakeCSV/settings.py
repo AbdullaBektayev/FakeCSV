@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
-    'storages'
+    'storages',
+    'django_environ',
 ]
 
 MIDDLEWARE = [
