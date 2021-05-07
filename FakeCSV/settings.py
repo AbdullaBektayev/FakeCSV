@@ -103,11 +103,11 @@ WSGI_APPLICATION = 'FakeCSV.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'df14nture80jgo',  # place for your postgres database
-        'USER': 'dhsjkevmigfmyt',  # place for your postgres user_name
-        'PASSWORD': '5774cfd5b579a0c1e5132ce80c119507f5906b8c857136fca55ef615241b70cb',
+        'NAME': 'name',  # place for your postgres database
+        'USER': 'user',  # place for your postgres user_name
+        'PASSWORD': 'password',
         # place for your postgres password
-        'HOST': 'ec2-54-224-194-214.compute-1.amazonaws.com',
+        'HOST': 'host',
         # place for your postgres host
         'PORT': '5432'  # place for your postgres port
     }
