@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [
     '0.0.0.0',
     '[::1]',
     'enigmatic-dawn-95775.herokuapp.com',
+    'planeks-fake-csv.herokuapp.com',
 ]
 
 

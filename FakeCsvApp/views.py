@@ -135,7 +135,7 @@ class DetailDownloadSchemaView(APIView):
             },
             ExpiresIn=1000
         )
-        return Response({'response': response})
+        return Response({'link': response})
 
 
 class CreateCsvView(APIView):
