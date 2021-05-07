@@ -119,7 +119,7 @@ class DetailDownloadSchemaView(APIView):
 
     def get(self, request, pk):
         download_schema = DownloadSchemas.objects.get(pk=pk)
-        file_name = download_schema.File_name
+        file_name = '1_2021-05-07T07_37_55.764411Z.csv'
         file_path = os.path.join(settings.MEDIA_ROOT, file_name)
         object_name = f'static/media/{file_name}'
         s3 = boto3.client(
@@ -127,8 +127,9 @@ class DetailDownloadSchemaView(APIView):
             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
             aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
         )
-        with open(file_path, 'w+b') as data:
-            s3.download_fileobj("fake-csv", object_name, data)
+
+        s3.download_file("fake-csv", object_name, object_name)
+        with open(object_name, 'w+b') as data:
             response = HttpResponse(
                 data.read(),
                 content_type='text/csv',

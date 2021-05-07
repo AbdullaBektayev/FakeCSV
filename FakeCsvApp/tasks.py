@@ -73,7 +73,7 @@ def create_csv_task(schema_id, row_num):
         aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
         aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
     )
-    with open(object_name, 'w') as f:
+    with open(object_name, 'w+') as f:
         writer = csv.writer(
             f,
             delimiter=delimiter,
@@ -92,6 +92,8 @@ def create_csv_task(schema_id, row_num):
                     )
                 )
             writer.writerow(writer_row)
+
     with open(object_name, 'rb') as data:
         s3.upload_fileobj(data, "fake-csv", object_name)
+
     return file_name, schema_date_modified
