@@ -120,7 +120,7 @@ class DetailDownloadSchemaView(APIView):
         download_schema = DownloadSchemas.objects.get(pk=pk)
         file_name = download_schema.File_name
         file_path = os.path.join(settings.MEDIA_ROOT, file_name)
-        with open(file_path, 'rb') as file:
+        with open(file_path, 'r') as file:
             response = HttpResponse(
                 file.read(),
                 content_type='text/csv',
