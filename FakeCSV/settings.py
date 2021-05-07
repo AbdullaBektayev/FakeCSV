@@ -13,9 +13,9 @@ import os
 from pathlib import Path
 
 from corsheaders.defaults import default_headers
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -35,6 +35,13 @@ ALLOWED_HOSTS = [
     'planeks-fake-csv.herokuapp.com',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "https://planeks-fake-csv.herokuapp.com",
+    "http://127.0.0.1:8080",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000"
+]
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -94,21 +101,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'FakeCSV.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'df14nture80jgo',      # place for your postgres database
-        'USER': 'dhsjkevmigfmyt',    # place for your postgres user_name
-        'PASSWORD': '5774cfd5b579a0c1e5132ce80c119507f5906b8c857136fca55ef615241b70cb',    # place for your postgres password
-        'HOST': 'ec2-54-224-194-214.compute-1.amazonaws.com',   # place for your postgres host
-        'PORT': '5432'         # place for your postgres port
+        'NAME': 'df14nture80jgo',  # place for your postgres database
+        'USER': 'dhsjkevmigfmyt',  # place for your postgres user_name
+        'PASSWORD': '5774cfd5b579a0c1e5132ce80c119507f5906b8c857136fca55ef615241b70cb',
+        # place for your postgres password
+        'HOST': 'ec2-54-224-194-214.compute-1.amazonaws.com',
+        # place for your postgres host
+        'PORT': '5432'  # place for your postgres port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -128,7 +135,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -142,7 +148,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -150,7 +155,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [STATIC_DIR]
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
