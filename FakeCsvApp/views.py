@@ -1,8 +1,5 @@
-import os
-
 import boto3
 from celery.result import AsyncResult
-from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -32,7 +29,7 @@ class SchemaDetailViews(APIView):
             return Response({'message': 'Tutorial was deleted successfully!'},
                             status=status.HTTP_204_NO_CONTENT
                             )
-        except Exception as e:
+        except Exception as exp:
             schema = Schemas.objects.all()
             serializer = SchemaDetailSerializer(schema)
             return Response(serializer.data)
@@ -40,7 +37,7 @@ class SchemaDetailViews(APIView):
     def put(self, request, pk):
         try:
             model = Schemas.objects.get(pk=pk)
-        except:
+        except Exception as exp:
             return Response(
                 {'message': "Schema was't found!"},
                 status=status.HTTP_204_NO_CONTENT
@@ -56,7 +53,7 @@ class SchemaDetailViews(APIView):
                 {'message': "Schema was updated successfully!"},
                 status=status.HTTP_302_FOUND
             )
-        except:
+        except Exception as exp:
             return Response(
                 {'message': "Schema was't updated!"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
@@ -70,6 +67,7 @@ class ColumnDetailView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
@@ -79,7 +77,7 @@ class ColumnDetailView(APIView):
                 'message': 'Column was deleted successfully!'},
                 status=status.HTTP_204_NO_CONTENT
             )
-        except Exception as e:
+        except Exception as exp:
             Response({
                 'message': 'Cannot delete columns'},
                 status=status.HTTP_400_BAD_REQUEST
@@ -100,7 +98,7 @@ class SchemaCreateViews(APIView):
             schema = Schemas.objects.create(User=request.user)
             serializer = SchemaDetailSerializer(schema)
             return Response(serializer.data)
-        except:
+        except Exception as exp:
             return Response(
                 {'request': request},
                 status=status.HTTP_400_BAD_REQUEST
@@ -157,5 +155,5 @@ class CreateCsvView(APIView):
             )
             serializer = DownloadSchemasDetailSerializer(download_schema)
             return Response(serializer.data)
-        except:
+        except Exception as exp:
             return Response({'message': 'not worked', 'request': request.body})
