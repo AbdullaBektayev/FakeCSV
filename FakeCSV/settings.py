@@ -13,27 +13,22 @@ import os
 from pathlib import Path
 from corsheaders.defaults import default_headers
 from datetime import timedelta
-
+import environ
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+env = environ.Env()
+environ.Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ozbgb)%8t%403ulbs-$)_1_*n#)im#n9)77b&ubnrmjwtdw%=b'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '0.0.0.0',
-    '[::1]',
-    'enigmatic-dawn-95775.herokuapp.com',
-    'planeks-fake-csv.herokuapp.com',
-]
+ALLOWED_HOSTS = env.tuple('ALLOWED_HOSTS')
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,7 +43,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
     'storages',
-    'django_environ',
 ]
 
 MIDDLEWARE = [
@@ -62,12 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
-    "http://127.0.0.1:8080",
-    "https://web.postman.co",
-    'https://enigmatic-dawn-95775.herokuapp.com',
-]
+CORS_ALLOWED_ORIGINS = env.tuple('CORS_ALLOWED_ORIGINS')
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'Access-Control-Allow-Headers',
@@ -103,16 +92,7 @@ WSGI_APPLICATION = 'FakeCSV.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'df14nture80jgo',  # place for your postgres database
-        'USER': 'dhsjkevmigfmyt',  # place for your postgres user_name
-        'PASSWORD': '5774cfd5b579a0c1e5132ce80c119507f5906b8c857136fca55ef615241b70cb',
-        # place for your postgres password
-        'HOST': 'ec2-54-224-194-214.compute-1.amazonaws.com',
-        # place for your postgres host
-        'PORT': '5432'  # place for your postgres port
-    }
+    'default': env.db('DATABASE_URL')
 }
 
 # Password validation
@@ -165,7 +145,7 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # CELERY STUFF
-REDIS_URL = "redis://:p821b5184336f08478407af73bfdbf7d0cac138b488b04879293c80d33df13649@ec2-18-213-92-149.compute-1.amazonaws.com:29629"
+REDIS_URL = env.str('REDIS_URL')
 CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -180,11 +160,11 @@ REST_FRAMEWORK = {
     )
 }
 
-AWS_ACCESS_KEY_ID = 'AKIA35HGPOJTLFQLERP2'
-AWS_SECRET_ACCESS_KEY = 'i3uxlmsownyVaCOguzKslRJBM9FkL9ay2sBntkz4'
-AWS_STORAGE_BUCKET_NAME = 'fake-csv'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
+AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_FILE_OVERWRITE = env.bool('AWS_S3_FILE_OVERWRITE', default=False)
+AWS_DEFAULT_ACL = env.bool('AWS_DEFAULT_ACL', default=False)
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
@@ -193,3 +173,5 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+django_heroku.settings(locals())
