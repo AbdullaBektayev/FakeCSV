@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-
 from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -35,13 +34,20 @@ ALLOWED_HOSTS = [
     'planeks-fake-csv.herokuapp.com',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://planeks-fake-csv.herokuapp.com",
-    "http://127.0.0.1:8080",
-    "http://localhost:8080",
-    "http://127.0.0.1:9000"
-]
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = default_headers + (
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Credentials',
+    'Access-Control-Allow-Origin',
+)
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+    'https://planeks-fake-csv.herokuapp.com',
+    'https://enigmatic-dawn-95775.herokuapp.com',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+)
 
 # Application definition
 
