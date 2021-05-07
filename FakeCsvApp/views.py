@@ -119,27 +119,23 @@ class DetailDownloadSchemaView(APIView):
 
     def get(self, request, pk):
         download_schema = DownloadSchemas.objects.get(pk=pk)
-        file_name = '1_2021-05-07T07_37_55.764411Z.csv'
-        file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+        file_name = download_schema.File_name
         object_name = f'static/media/{file_name}'
-        s3 = boto3.client(
+        session = boto3.session.Session(region_name='us-east-2')
+        s3 = session.client(
             's3',
             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
             aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
         )
-
-        s3.download_file("fake-csv", object_name, object_name)
-        with open(object_name, 'w+b') as data:
-            response = HttpResponse(
-                data.read(),
-                content_type='text/csv',
-                headers={
-                    'Content-Disposition': f'attachment; '
-                                           f'filename="{file_name}"'
-                },
-            )
-            return response
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        response = s3.generate_presigned_url(
+            'get_object',
+            Params={
+                'Bucket': 'fake-csv',
+                'Key': object_name
+            },
+            ExpiresIn=1000
+        )
+        return Response({'response': response})
 
 
 class CreateCsvView(APIView):
