@@ -1,4 +1,6 @@
 from celery import shared_task
+import boto3
+from FakeCSV import settings
 from .serializers import SchemaDetailSerializer
 from .models import Schemas
 from django.utils.timezone import now
@@ -65,8 +67,13 @@ def create_csv_task(schema_id, row_num):
     delimiter, quotechar, schema_date_modified = get_choices_and_date(schema)
 
     file_name = f'{schema_id}_{schema_date_modified}.csv'
-
-    with open(f'static/media/{file_name}', 'w') as f:
+    object_name = f'static/media/{file_name}'
+    s3 = boto3.client(
+        's3',
+        aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
+    )
+    with open(object_name, 'w') as f:
         writer = csv.writer(
             f,
             delimiter=delimiter,
@@ -85,5 +92,6 @@ def create_csv_task(schema_id, row_num):
                     )
                 )
             writer.writerow(writer_row)
-
+    with open(object_name, 'rb') as data:
+        s3.upload_fileobj(data, "fake-csv", object_name)
     return file_name, schema_date_modified

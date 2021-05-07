@@ -1,5 +1,6 @@
 import os
 
+import boto3
 from celery.result import AsyncResult
 from django.http import HttpResponse
 from rest_framework import status
@@ -120,9 +121,16 @@ class DetailDownloadSchemaView(APIView):
         download_schema = DownloadSchemas.objects.get(pk=pk)
         file_name = download_schema.File_name
         file_path = os.path.join(settings.MEDIA_ROOT, file_name)
-        with open(file_path, 'r') as file:
+        object_name = f'static/media/{file_name}'
+        s3 = boto3.client(
+            's3',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
+        )
+        with open(file_path, 'w+b') as data:
+            s3.download_fileobj("fake-csv", object_name, data)
             response = HttpResponse(
-                file.read(),
+                data.read(),
                 content_type='text/csv',
                 headers={
                     'Content-Disposition': f'attachment; '
